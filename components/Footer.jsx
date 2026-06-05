@@ -4,7 +4,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
         
         <div>
-          <h2 className="text-5xl font-black tracking-tighter mb-4">BAZANA!</h2>
+          <h2 className="text-5xl font-black tracking-tighter mb-4">NAME!</h2>
           <p className="font-medium opacity-90 leading-relaxed">
             The power of roasted crunch. Not fried, just full of flavor.
           </p>
@@ -29,7 +29,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-sm font-semibold opacity-80 border-t border-white/20 pt-8">
-        <p>© 2026 Bazana Foods Pvt. Ltd. All rights reserved.</p>
+        <p>© 2026 NAME Foods Pvt. Ltd. All rights reserved.</p>
       </div>
     </footer>
   );
