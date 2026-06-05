@@ -1,19 +1,25 @@
 import './globals.css';
 import SmoothScroll from '../components/SmoothScroll'; 
 import Navbar from '../components/Navbar';
+import PageTransition from '../components/PageTransition';
+import Footer from '../components/Footer';
 
 export const metadata = {
-  title: 'Premium E-Commerce',
-  description: 'Elevate Your Experience',
+  title: 'Vibrant Snacks | E-Commerce',
+  description: 'Snacks that get you buzzing!',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="bg-[#0a0a0a] text-white antialiased">
+      {/* Changed to a clean white background with dark text */}
+      <body className="bg-white text-zinc-900 antialiased overflow-x-hidden font-sans">
         <SmoothScroll>
           <Navbar />
-          {children}
+          <PageTransition>
+            {children}
+            <Footer />
+          </PageTransition>
         </SmoothScroll>
       </body>
     </html>

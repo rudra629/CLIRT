@@ -1,41 +1,44 @@
 'use client';
 import Link from 'next/link';
-import { ShoppingBag, User } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { ShoppingBag } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 export default function Navbar() {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
   return (
     <motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6 bg-[#0a0a0a]/70 backdrop-blur-md border-b border-white/5"
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-4 bg-white shadow-md"
     >
-      {/* Logo */}
-      <Link href="/" className="text-xl tracking-widest font-light uppercase text-white">
-        Aura.
+      {/* Playful Bold Logo */}
+      <Link href="/" className="text-3xl font-black tracking-tighter text-[#C8102E]">
+        BAZANA!
       </Link>
 
-      {/* Center Links (Hidden on mobile for simplicity) */}
-      <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest text-gray-400">
-        <Link href="/" className="hover:text-white transition-colors">Shop</Link>
-        <Link href="#" className="hover:text-white transition-colors">Collections</Link>
-        <Link href="#" className="hover:text-white transition-colors">Journal</Link>
+      {/* Center Links */}
+      <div className="hidden md:flex gap-8 text-sm font-bold uppercase text-zinc-800">
+        <Link href="/" className="hover:text-[#C8102E] transition-colors">Shop Snacks</Link>
+        <Link href="#" className="hover:text-[#C8102E] transition-colors">Our Story</Link>
+        <Link href="#" className="hover:text-[#C8102E] transition-colors">Find a Store</Link>
       </div>
 
-      {/* Right Icons: Profile & Cart */}
       <div className="flex items-center gap-6">
-        <button className="flex items-center justify-center w-8 h-8 rounded-full bg-zinc-800 overflow-hidden border border-zinc-700 hover:border-white transition-colors">
-          {/* Fake Profile Picture */}
-          <img 
-            src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" 
-            alt="Profile" 
-            className="w-full h-full object-cover"
-          />
-        </button>
-        <Link href="/cart" className="relative group">
-          <ShoppingBag className="w-5 h-5 text-gray-300 group-hover:text-white transition-colors" strokeWidth={1.5} />
-          <span className="absolute -top-2 -right-2 bg-white text-black text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+        <div className="relative">
+          <button 
+            onClick={() => setIsProfileOpen(!isProfileOpen)}
+            className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#C8102E] hover:scale-105 transition-transform"
+          >
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop" alt="Profile" className="w-full h-full object-cover"/>
+          </button>
+        </div>
+
+        <Link href="/cart" className="relative group p-2">
+          <ShoppingBag className="w-6 h-6 text-zinc-800 group-hover:text-[#C8102E] transition-colors" strokeWidth={2} />
+          <span className="absolute top-0 right-0 bg-[#0081C8] text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">
             2
           </span>
         </Link>

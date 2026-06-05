@@ -2,56 +2,54 @@
 import { motion } from 'framer-motion';
 
 export default function Hero() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-  };
-
   return (
-    <section className="relative h-screen w-full bg-[#0a0a0a] text-[#f4f4f5] flex flex-col justify-center items-center overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1618090584126-129cd1f3f319?q=80&w=2574&auto=format&fit=crop"
-          alt="Luxury background"
-          className="w-full h-full object-cover opacity-30 scale-105"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0a0a0a]" />
+    <section className="relative min-h-screen w-full flex flex-col md:flex-row pt-20">
+      
+      {/* Left Side: White Background, Red Text */}
+      <div className="w-full md:w-1/2 bg-white flex flex-col justify-center px-8 md:px-16 lg:px-24 py-16">
+        <motion.h1 
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-6xl md:text-7xl lg:text-8xl font-black text-[#C8102E] leading-[0.9] uppercase"
+        >
+          Snacks <br /> That Get <br /> You Buzzing!
+        </motion.h1>
+        
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mt-6 text-lg text-zinc-600 font-medium"
+        >
+          Let's meet your Not Fried, No Oil Snacks!
+        </motion.p>
       </div>
 
-      <motion.div
-        className="relative z-10 text-center px-4"
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-      >
-        <motion.p variants={itemVariants} className="text-sm tracking-[0.3em] uppercase mb-4 text-gray-400">
-          The New Standard
-        </motion.p>
-        
-        <motion.h1 
-          variants={itemVariants} 
-          className="text-6xl md:text-8xl font-light tracking-tighter mb-6"
+      {/* Right Side: Bright Blue Background */}
+      <div className="w-full md:w-1/2 bg-[#0081C8] flex flex-col justify-center items-center p-12 relative overflow-hidden">
+        <motion.div
+          animate={{ y: [0, -20, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="relative z-10 text-center"
         >
-          Elevate Your <br /> Experience.
-        </motion.h1>
-
-        <motion.div variants={itemVariants} className="mt-10">
-          <button className="group relative px-8 py-4 bg-white text-black text-sm uppercase tracking-widest overflow-hidden">
-            <span className="relative z-10 group-hover:text-white transition-colors duration-500">
-              Explore Collection
-            </span>
-            <div className="absolute inset-0 h-full w-full bg-black scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 ease-out" />
+          <h2 className="text-4xl md:text-6xl font-black text-white uppercase mb-8 drop-shadow-lg">
+            Roasted Salted <br/> Almonds!
+          </h2>
+          
+          {/* Fun, Pill-Shaped Button */}
+          <button className="px-10 py-4 bg-transparent border-4 border-white text-white font-black text-lg rounded-full hover:bg-white hover:text-[#0081C8] transition-all duration-300 transform hover:scale-105">
+            BUY NOW
           </button>
         </motion.div>
-      </motion.div>
+
+        {/* Fake floating snack element */}
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-10 -right-10 w-64 h-64 bg-white/10 rounded-full blur-3xl"
+        />
+      </div>
     </section>
   );
 }
